@@ -1,13 +1,16 @@
-import 'package:expensive_tracker/models/conta.dart';
+
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../models/categoria.dart';
+import '../models/conta.dart';
 import '../models/tipo_transacao.dart';
 import '../models/transacao.dart';
 
 class TransacoesReepository {
-  List<Transacao> listarTransacoes() {
+  Future<List<Transacao>> listarTransacoes(
+      {TipoTransacao? tipoTransacao}) async {
+    await Future.delayed(const Duration(seconds: 5));
     return [
       Transacao(
         id: '1',
@@ -169,6 +172,9 @@ class TransacoesReepository {
           tipoConta: TipoConta.contaCorrente,
         ),
       ),
-    ];
+    ]
+        .where((transacao) =>
+            tipoTransacao == null || transacao.tipoTransacao == tipoTransacao)
+        .toList();
   }
 }

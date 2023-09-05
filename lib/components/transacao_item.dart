@@ -1,31 +1,26 @@
-import 'package:expensive_tracker/models/tipo_transacao.dart';
-import 'package:expensive_tracker/pages/transa%C3%A7ao_page.dart';
-import 'package:expensive_tracker/pages/transacoes_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../models/tipo_transacao.dart';
 import '../models/transacao.dart';
 
 class TransacaoItem extends StatelessWidget {
   final Transacao transacao;
-  const TransacaoItem({Key? key, required this.transacao}) : super(key: key);
+  final void Function()? onTap;
+  const TransacaoItem({Key? key, required this.transacao, this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
-          backgroundColor: transacao.categoria.cor,
-          child: IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, TransacaoPage.routeName,
-                  arguments: ScreenArguments(transacao));
-            },
-            icon: Icon(
-              transacao.categoria.icone,
-              size: 20,
-              color: Colors.white,
-            ),
-          )),
+        backgroundColor: transacao.categoria.cor,
+        child: Icon(
+          transacao.categoria.icone,
+          size: 20,
+          color: Colors.white,
+        ),
+      ),
       title: Text(transacao.descricao),
       subtitle: Text(DateFormat('MM/dd/yyyy').format(transacao.data)),
       trailing: Text(
@@ -37,6 +32,7 @@ class TransacaoItem extends StatelessWidget {
                 ? Colors.pink
                 : Colors.green),
       ),
+      onTap: onTap,
     );
   }
 }

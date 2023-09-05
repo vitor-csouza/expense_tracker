@@ -1,5 +1,6 @@
 import 'package:expensive_tracker/pages/home_page.dart';
-import 'package:expensive_tracker/pages/transa%C3%A7ao_page.dart';
+import 'package:expensive_tracker/pages/transa%C3%A7ao_detalhes_page.dart';
+import 'package:expensive_tracker/pages/transacao_cadastro.dart';
 
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "/": (context) => const HomePage(),
-        "/transacao": (context) => const TransacaoPage()
+        "/transacao-detalhes": (context) => const TransacaoDetalhesPage(),
+        "/transacao-cadastro":(context) => const TransacaoCadastro()
       },
       initialRoute: "/",
     );
