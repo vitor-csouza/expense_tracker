@@ -1,6 +1,8 @@
 import 'package:expensive_tracker/pages/home_page.dart';
+import 'package:expensive_tracker/pages/login_page.dart';
+import 'package:expensive_tracker/pages/registrar_pages.dart';
 import 'package:expensive_tracker/pages/transa%C3%A7ao_detalhes_page.dart';
-import 'package:expensive_tracker/pages/transacao_cadastro.dart';
+import 'package:expensive_tracker/pages/transacao_cadastro_page.dart';
 
 import 'package:flutter/material.dart';
 
@@ -22,9 +24,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routes: {
-        "/": (context) => const HomePage(),
+        "/": (context) => const LoginPage(),
+        "/registrar": (context) => const RegistrarPage(),
+        "/home": (context) => const HomePage(),
         "/transacao-detalhes": (context) => const TransacaoDetalhesPage(),
-        "/transacao-cadastro":(context) => const TransacaoCadastro()
+        "/transacao-cadastro": (context) => const TransacaoCadastroPage(),
       },
       initialRoute: "/",
     );
